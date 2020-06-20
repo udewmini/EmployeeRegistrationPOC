@@ -1,0 +1,23 @@
+<div class="container py-5">  
+    <h3 class="text-center text-uppercase">List of Employees</h3>  
+    <table class="table table-bordered table-striped">  
+        <thead>  
+            <tr class="text-center text-uppercase">  
+                <th>Employee ID</th>  
+                <th>First Name</th>  
+                <th>Date of Birth</th>  
+                <th>Address</th>  
+                <th>Email</th>  
+              </tr>  
+            </thead>  
+        <tbody>  
+            <tr *ngFor="let emp of employee">  
+              <td>{{emp.id}}</td>  
+              <td>{{emp.name}}</td>  
+              <td>{{emp.dob}}</td>  
+              <td>{{emp.address}}</td>  
+              <td>{{emp.email}}</td>  
+            </tr>  
+          </tbody>  
+        </table>  
+      </div>  
