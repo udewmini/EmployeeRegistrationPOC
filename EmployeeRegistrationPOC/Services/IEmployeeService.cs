@@ -12,7 +12,7 @@ namespace EmployeeRegistrationPOC.Services
         public List<Employee> GetEmployee();
 
         public Employee AddEmployee(Employee Emp);
-        public Employee UpdateEmployee(int Id, Employee Emp);
-        public int DeleteEmployee(int Id);
+        public Task<Employee> UpdateEmployee(int Id, Employee Emp);
+        public Task<int> DeleteEmployee(int id);
     }
 }

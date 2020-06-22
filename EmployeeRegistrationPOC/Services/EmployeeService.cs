@@ -1,4 +1,5 @@
 ﻿using EmployeeRegistrationPOC.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,46 +9,60 @@ namespace EmployeeRegistrationPOC.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private List<Employee> _emp;
+        private readonly Context _context;
+        // private List<Employee> _emp;
 
         public EmployeeService()
         {
-            _emp = new List<Employee>();
+            _context = new Context();
+            // _emp = new List<Employee>();
         }
 
         public List<Employee> GetEmployee()
         {
-            return _emp;
+            return _context.Employee.OrderBy(p => p.Id).ToList();
+            //return _emp;
         }
 
         public Employee AddEmployee(Employee emp)
         {
-            _emp.Add(emp);
+            _context.Employee.Add(emp);
+            _context.SaveChanges();
             return emp;
         }
 
-        public Employee UpdateEmployee(int Id, Employee emp)
+        public async Task<Employee> UpdateEmployee(int Id, Employee emp)
         {
-            for (var index = _emp.Count - 1; index >= 0; index--)
+           
+            var employeeItem = await _context.Employee.FindAsync(Id);
+            if (employeeItem != null)
             {
-                if (_emp[index].Id == Id)
-                {
-                    _emp[index] = emp;
-                }
+                employeeItem.Fname = emp.Fname;
+                employeeItem.Lname = emp.Lname;
+                employeeItem.Position = emp.Position;
+                employeeItem.Email = emp.Email;
+                employeeItem.Address = emp.Address;
+                employeeItem.Contact = emp.Contact;
+               
+
             }
-            return emp;
+
+            await _context.SaveChangesAsync();
+            return employeeItem;
+
         }
 
-        public int DeleteEmployee(int id)
+        public async Task<int> DeleteEmployee(int id)
         {
-            for (var index = _emp.Count - 1; index >= 0; index--)
+            for (var index = _context.Employee.Count() - 1; index >= 0; index--)
             {
-                if (_emp[index].Id == id)
+                if (_context.Employee.ToArray()[index].Id == id)
                 {
-                    _emp.RemoveAt(index);
+                    _context.Employee.Remove(_context.Employee.ToArray()[index]);
                 }
             }
 
+            await _context.SaveChangesAsync();
             return id;
         }
     }

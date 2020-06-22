@@ -1,0 +1,36 @@
+<div class="container py-5">  
+    <h3 class="text-center text-uppercase">Employee Removal</h3>  
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+      <table class="table table-bordered table-striped">  
+          <thead>  
+              <tr class="text-center text-uppercase">  
+                  <th>Employee ID</th>  
+                  <th>First Name</th>  
+                  <th>Last Name</th> 
+                  <th>Position</th>
+                  <th>Email</th>  
+                  <th>Address</th>    
+                  <th>Contact No</th> 
+                  <th>Action</th>
+                </tr>  
+              </thead>  
+          <tbody>  
+              <tr *ngFor="let emp of employee">  
+                <td>{{emp.id}}</td>  
+                <td>{{emp.fname}}</td>  
+                <td>{{emp.lname}}</td>  
+                <td>{{emp.position}}</td> 
+                <td>{{emp.email}}</td>   
+                <td>{{emp.address}}</td>  
+                <td>{{emp.contact}}</td>  
+                <td><button type="submit" name="delete" >
+                  Delete
+              </button>
+              </tr>  
+            </tbody>  
+          </table>  
+          </form>
+        </div>  
+  
+    
+   

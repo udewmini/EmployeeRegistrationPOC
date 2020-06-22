@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "MyConnectionString": "Data Source=DESKTOP-A59UM8F;Initial Catalog=EmployeeDB;User ID=sa;Password=abc123"
+  }
+}

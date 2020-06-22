@@ -5,18 +5,22 @@
             <tr class="text-center text-uppercase">  
                 <th>Employee ID</th>  
                 <th>First Name</th>  
-                <th>Date of Birth</th>  
-                <th>Address</th>  
+                <th>Last Name</th> 
+                <th>Position</th>
                 <th>Email</th>  
+                <th>Address</th>    
+                <th>Contact No</th> 
               </tr>  
             </thead>  
         <tbody>  
             <tr *ngFor="let emp of employee">  
               <td>{{emp.id}}</td>  
-              <td>{{emp.name}}</td>  
-              <td>{{emp.dob}}</td>  
+              <td>{{emp.fname}}</td>  
+              <td>{{emp.lname}}</td>  
+              <td>{{emp.position}}</td> 
+              <td>{{emp.email}}</td>   
               <td>{{emp.address}}</td>  
-              <td>{{emp.email}}</td>  
+              <td>{{emp.contact}}</td>  
             </tr>  
           </tbody>  
         </table>  
